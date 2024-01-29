@@ -68,7 +68,7 @@ cat <<EOF >/etc/v2ray/config.json
             },
             "streamSettings": {
                 "network": "ws",
-                "security": "none", 
+                "security": "tls", 
                 "wsSettings": { 
                     "path": "/2048-end", 
                     "headers": { "Host": "am-koyeb.cooldoing.com" } 

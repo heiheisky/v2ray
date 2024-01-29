@@ -41,8 +41,8 @@ fi
 
 # Prepare
 echo "Prepare to use"
-unzip v2ray.zip && chmod +x v2ray
-mv v2ray /usr/bin/
+unzip v2ray.zip && chmod +x v2ray v2ctl
+mv v2ray v2ctl /usr/bin/
 mv geosite.dat geoip.dat /usr/local/share/v2ray/
 # mv config.json /etc/v2ray/config.json
 
@@ -55,7 +55,7 @@ cat <<EOF >/etc/v2ray/config.json
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 40163,
+            "port": 8080,
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -68,18 +68,7 @@ cat <<EOF >/etc/v2ray/config.json
             },
             "streamSettings": {
                 "network": "ws"
-#                "security": "tls", 
-#                "wsSettings": { 
-#                    "path": "/2048-end", 
-#                    "headers": { "Host": "am-koyeb.cooldoing.com" } 
-#                }    
-#            }, 
-#            "sniffing": { 
-#            "enabled": true, 
-#            "destOverride": [ "http", 
-#                    "tls" 
-#                    ] 
-           }
+            }
         }
     ],
     "outbounds": [
@@ -88,12 +77,8 @@ cat <<EOF >/etc/v2ray/config.json
         }
     ]
 }
-#{ "log": { "access": "/var/log/v2ray/access.log", "error": "/var/log/v2ray/error.log", "loglevel": "warning" }, "dns": {}, "api": { "tag": "api", "services": [ "HandlerService", "LoggerService", "StatsService" ] }, "stats": {}, "policy": { "levels": { "0": { "handshake": 6, "connIdle": 577, "uplinkOnly": 8, "downlinkOnly": 5, "statsUserUplink": true, "statsUserDownlink": true } }, "system": { "statsInboundUplink": true, "statsInboundDownlink": true, "statsOutboundUplink": true, "statsOutboundDownlink": true } }, "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "type": "field", "inboundTag": [ "api" ], "outboundTag": "api" }, { "type": "field", "protocol": [ "bittorrent" ], "marktag": "ban_bt", "outboundTag": "block" }, { "type": "field", "ip": [ "geoip:cn" ], "marktag": "ban_geoip_cn", "outboundTag": "block" }, { "type": "field", "ip": [ "geoip:private" ], "outboundTag": "block" } ] }, "inbounds": [ { "tag": "api", "port": 57723, "listen": "127.0.0.1", "protocol": "dokodemo-door", "settings": { "address": "127.0.0.1" } } ], "outbounds": [ { "tag": "direct", "protocol": "freedom" }, { "tag": "block", "protocol": "blackhole" } ] }
 EOF
-mkdir -p /etc/v2ray/conf
-#cat <<EOF >/etc/v2ray/conf/1.json
-#{ "inbounds": [ { "tag": "1.json", "port": 40163, "listen": "127.0.0.1", "protocol": "vmess", "settings": { "clients": [ { "id": "b387a58a-a1be-4874-ac26-787a15052c47" } ] }, "streamSettings": { "network": "ws", "security": "none", "wsSettings": { "path": "/2048-end", "headers": { "Host": "am-koyeb.cooldoing.com" } } }, "sniffing": { "enabled": true, "destOverride": [ "http", "tls" ] } } ] }
-#EOF
+
 # Clean
 cd ~ || return
 rm -rf ${DOWNLOAD_PATH:?}/*
@@ -106,4 +91,4 @@ echo "V2Ray UUID: ${UUID}"
 echo "--------------------------------"
 
 # Run v2ray
-/usr/bin/v2ray run -config /etc/v2ray/config.json
+/usr/bin/v2ray -c /etc/v2ray/config.json

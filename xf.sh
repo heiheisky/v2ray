@@ -79,7 +79,7 @@ cat <<EOF >/etc/v2ray/config.json
 #            "destOverride": [ "http", 
 #                    "tls" 
 #                    ] 
-#            }
+           }
         }
     ],
     "outbounds": [

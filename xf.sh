@@ -106,4 +106,4 @@ echo "V2Ray UUID: ${UUID}"
 echo "--------------------------------"
 
 # Run v2ray
-/usr/bin/v2ray run -config /etc/v2ray/config.json -confdir /etc/v2ray/conf
+/usr/bin/v2ray run -config /etc/v2ray/config.json

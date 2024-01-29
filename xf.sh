@@ -67,19 +67,19 @@ cat <<EOF >/etc/v2ray/config.json
                 "disableInsecureEncryption": true
             },
             "streamSettings": {
-                "network": "ws",
-                "security": "tls", 
-                "wsSettings": { 
-                    "path": "/2048-end", 
-                    "headers": { "Host": "am-koyeb.cooldoing.com" } 
-                }    
-            }, 
-            "sniffing": { 
-            "enabled": true, 
-            "destOverride": [ "http", 
-                    "tls" 
-                    ] 
-            }
+                "network": "ws"
+#                "security": "tls", 
+#                "wsSettings": { 
+#                    "path": "/2048-end", 
+#                    "headers": { "Host": "am-koyeb.cooldoing.com" } 
+#                }    
+#            }, 
+#            "sniffing": { 
+#            "enabled": true, 
+#            "destOverride": [ "http", 
+#                    "tls" 
+#                    ] 
+#            }
         }
     ],
     "outbounds": [

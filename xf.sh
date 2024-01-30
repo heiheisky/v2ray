@@ -71,7 +71,7 @@ cat <<EOF >/etc/v2ray/config.json
             "security": "none", 
             "wsSettings": 
                 { 
-                "path": "/2048-end", 
+                "path": "/", 
                 "headers": { "Host": "am-koyeb.cooldoing.com" } 
                 } 
             }, 

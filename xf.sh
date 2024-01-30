@@ -52,7 +52,36 @@ cat <<EOF >/etc/v2ray/config.json
     "log": {
         "loglevel": "warning"
     },
-    "inbounds": [ { "tag": "VMess-WS-TLS-am-koyeb.cooldoing.com", "port": 40163, "listen": "0.0.0.0", "protocol": "vmess", "settings": { "clients": [ { "id": "eaa28261-44f7-4324-9553-0dc38d487e1a" } ] }, "streamSettings": { "network": "ws", "security": "none", "wsSettings": { "path": "/2048-end", "headers": { "Host": "am-koyeb.cooldoing.com" } } }, "sniffing": { "enabled": true, "destOverride": [ "http", "tls" ] } } ],
+    "inbounds": [ 
+        { 
+        "port": "8080", 
+        "listen": "0.0.0.0", 
+        "protocol": "vmess", 
+        "settings": 
+            { 
+            "clients": [ 
+                { 
+                "id": "eaa28261-44f7-4324-9553-0dc38d487e1a" 
+                } 
+                    ] 
+                }, 
+            "streamSettings": 
+            { 
+            "network": "ws", 
+            "security": "none", 
+            "wsSettings": 
+                { 
+                "path": "/", 
+                "headers": { "Host": "am-koyeb.cooldoing.com" } 
+                } 
+            }, 
+            "sniffing": 
+                { 
+                "enabled": true, 
+                "destOverride": [ "http", "tls" ] 
+                } 
+            } 
+        ],
     "outbounds": [
         {
             "protocol": "freedom"
